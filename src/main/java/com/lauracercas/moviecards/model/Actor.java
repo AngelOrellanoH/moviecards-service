@@ -10,6 +10,7 @@ package com.lauracercas.moviecards.model;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -26,6 +27,9 @@ public class Actor {
     private Date birthDate;
 
     private String country;
+
+    @Column(name = "dead_date", nullable = true)
+    private Date deadDate; 
 
     @ManyToMany(mappedBy = "actors")
 
@@ -79,6 +83,14 @@ public class Actor {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+    public Date getDeadDate() {
+    return deadDate;
+    }
+
+    public void setDeadDate(Date deadDate) {
+        this.deadDate = deadDate;
+    }
+
 
     @Override
     public boolean equals(Object o) {
